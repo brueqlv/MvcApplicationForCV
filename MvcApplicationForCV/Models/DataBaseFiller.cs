@@ -60,6 +60,16 @@
                 Writing = Enum.LanguageSkills.B2
             };
 
+            WorkExperience workExperience = new WorkExperience
+            {
+                CompanyName = "Universal Pictures",
+                PositionTitle = "Gradener",
+                PositionDescription = "Clean webs",
+                WeeklyWorkLoad = 40,
+                StartDate = new DateTime(2017, 01, 01),
+                EndDate = new DateTime(2018, 02, 02),
+            };
+
             LanguageSkills languageskills2 = new LanguageSkills
             {
                 Name = "Estonian",
@@ -76,16 +86,6 @@
                 PhoneNumber = "123-456-7890",
                 Email = "peter.parked@example.com",
                 AddressList = new List<Address> { address1, address2 }
-            };
-
-            WorkExperience workExperience = new WorkExperience
-            {
-                CompanyName = "Universal Pictures",
-                PositionTitle = "Gradener",
-                PositionDescription = "Clean webs",
-                WeeklyWorkLoad = 40,
-                StartDate = new DateTime(2017, 01, 01),
-                EndDate = new DateTime(2018, 02, 02),
             };
 
             var cv = new CV

@@ -4,9 +4,9 @@
     {
         public int Id { get; set; }
         public PersonalInfo PersonalInfo { get; set; }
-        public List<Education> Educations { get; set; }
-        public List<WorkExperience> WorkExperiences { get; set; }
-        public List<LanguageSkills> LanguageSkills { get; set; }
+        public ICollection<Education> Educations { get; set; } = new List<Education>();
+        public ICollection<WorkExperience> WorkExperiences { get; set; } = new List<WorkExperience>();
+        public ICollection<LanguageSkills> LanguageSkills { get; set; } = new List<LanguageSkills>();
 
         public void UpdateFrom(CV updatedCV)
         {

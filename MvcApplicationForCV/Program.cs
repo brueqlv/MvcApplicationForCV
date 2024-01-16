@@ -5,6 +5,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddScoped<CvDataService>();
+
+
 builder.Services.AddDbContext<MvcApplicationForCvDbContext>(options =>
 {
     string connectionString = builder.Configuration.GetConnectionString("WeatherDatabase");

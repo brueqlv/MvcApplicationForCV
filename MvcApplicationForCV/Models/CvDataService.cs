@@ -1,4 +1,6 @@
-﻿namespace MvcApplicationForCV.Models
+﻿using System.Data.Entity;
+
+namespace MvcApplicationForCV.Models
 {
     public class CvDataService
     {
@@ -11,7 +13,12 @@
 
         public List<CV> GetAllCVs()
         {
-            return _dbContext.CVs.ToList();
+            return _dbContext.CVs
+                .Include(cv => cv.PersonalInfo)
+                .Include(cv => cv.Educations)
+                .Include(cv => cv.WorkExperiences)
+                .Include(cv => cv.LanguageSkills)
+                .ToList();
         }
 
         public void EditCV(int CVId, CV updatedCV)

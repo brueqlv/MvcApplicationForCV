@@ -12,7 +12,7 @@ using MvcApplicationForCV.Models;
 namespace MvcApplicationForCV.Migrations
 {
     [DbContext(typeof(MvcApplicationForCvDbContext))]
-    [Migration("20240116103826_InitialCreate")]
+    [Migration("20240116144721_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,7 +58,7 @@ namespace MvcApplicationForCV.Migrations
 
                     b.HasIndex("PersonalInfoId");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Address");
                 });
 
             modelBuilder.Entity("MvcApplicationForCV.Models.CV", b =>

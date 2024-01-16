@@ -26,7 +26,7 @@ namespace MvcApplicationForCV.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Addresses",
+                name: "Address",
                 columns: table => new
                 {
                     AddressId = table.Column<int>(type: "int", nullable: false)
@@ -40,9 +40,9 @@ namespace MvcApplicationForCV.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Addresses", x => x.AddressId);
+                    table.PrimaryKey("PK_Address", x => x.AddressId);
                     table.ForeignKey(
-                        name: "FK_Addresses_PersonalInfo_PersonalInfoId",
+                        name: "FK_Address_PersonalInfo_PersonalInfoId",
                         column: x => x.PersonalInfoId,
                         principalTable: "PersonalInfo",
                         principalColumn: "PersonalInfoId");
@@ -139,8 +139,8 @@ namespace MvcApplicationForCV.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Addresses_PersonalInfoId",
-                table: "Addresses",
+                name: "IX_Address_PersonalInfoId",
+                table: "Address",
                 column: "PersonalInfoId");
 
             migrationBuilder.CreateIndex(
@@ -167,7 +167,7 @@ namespace MvcApplicationForCV.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Addresses");
+                name: "Address");
 
             migrationBuilder.DropTable(
                 name: "Education");

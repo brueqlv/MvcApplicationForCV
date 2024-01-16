@@ -56,7 +56,7 @@ namespace MvcApplicationForCV.Migrations
 
                     b.HasIndex("PersonalInfoId");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Address");
                 });
 
             modelBuilder.Entity("MvcApplicationForCV.Models.CV", b =>
