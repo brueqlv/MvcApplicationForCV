@@ -1,9 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using MvcApplicationForCV.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddDbContext<MvcApplicationForCvDbContext>(options =>
+{
+    string connectionString = builder.Configuration.GetConnectionString("WeatherDatabase");
+
+    options.UseSqlServer(connectionString);
+}, ServiceLifetime.Scoped);
+
 var app = builder.Build();
+
+DataBaseFiller.FillData(app.Services);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
