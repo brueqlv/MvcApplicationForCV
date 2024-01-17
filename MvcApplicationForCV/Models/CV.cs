@@ -3,10 +3,17 @@
     public class CV
     {
         public int Id { get; set; }
-        public PersonalInfo PersonalInfo { get; set; }
-        public ICollection<Education> Educations { get; set; } = new List<Education>();
-        public ICollection<WorkExperience> WorkExperiences { get; set; } = new List<WorkExperience>();
-        public ICollection<LanguageSkills> LanguageSkills { get; set; } = new List<LanguageSkills>();
+        public virtual PersonalInfo PersonalInfo { get; set; }
+        public virtual List<Education> Educations { get; set; }
+        public virtual List<WorkExperience> WorkExperiences { get; set; }
+        public virtual List<LanguageSkills> LanguageSkills { get; set; }
+
+        public CV()
+        {
+            Educations = new List<Education>();
+            WorkExperiences = new List<WorkExperience>();
+            LanguageSkills = new List<LanguageSkills>();
+        }
 
         public void UpdateFrom(CV updatedCV)
         {

@@ -25,25 +25,18 @@ namespace MvcApplicationForCV.Controllers
             return View();
         }
 
-        // GET: CVController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CVController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(CV model)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _cvDataService.AddCV(model);
+            return RedirectToAction("Index");
+
         }
 
         // GET: CVController/Edit/5

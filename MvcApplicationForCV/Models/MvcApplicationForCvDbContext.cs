@@ -10,13 +10,6 @@ namespace MvcApplicationForCV.Models
         {
             Database.Migrate();
         }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            // Other options configuration...
-
-            optionsBuilder.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()));
-            optionsBuilder.EnableSensitiveDataLogging();
-        }
     }
 }
+

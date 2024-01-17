@@ -8,6 +8,6 @@
         public string PositionDescription { get; set; }
         public int WeeklyWorkLoad {  get; set; }
         public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
     }
 }

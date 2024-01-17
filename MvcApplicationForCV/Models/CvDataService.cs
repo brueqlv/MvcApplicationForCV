@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿
+
+using Microsoft.EntityFrameworkCore;
 
 namespace MvcApplicationForCV.Models
 {
@@ -41,6 +43,12 @@ namespace MvcApplicationForCV.Models
                 _dbContext.CVs.Remove(cvToDelete);
                 _dbContext.SaveChanges();
             }
+        }
+
+        public void AddCV(CV cv)
+        {
+            _dbContext.Add(cv);
+            _dbContext.SaveChanges();
         }
     }
 }
