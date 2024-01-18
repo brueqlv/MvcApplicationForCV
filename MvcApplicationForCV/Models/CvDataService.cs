@@ -23,6 +23,17 @@ namespace MvcApplicationForCV.Models
                 .ToList();
         }
 
+        public async Task<CV?> GetCVFromIdAsync(int id)
+        {
+            return await _dbContext.CVs
+                .Include(cv => cv.PersonalInfo)
+                    .ThenInclude(pi => pi.AddressList)
+                .Include(cv => cv.Educations)
+                .Include(cv => cv.WorkExperiences)
+                .Include(cv => cv.LanguageSkills)
+                .FirstOrDefaultAsync(cv => cv.Id == id);
+        }
+
         public void EditCV(int CVId, CV updatedCV)
         {
             CV existingCV = _dbContext.CVs.Find(CVId);
@@ -34,7 +45,7 @@ namespace MvcApplicationForCV.Models
             }
         }
 
-        public void DeleteCV(int cvId) //Vai ir labāks veids kā izdzēst ierakstu no datu bāzes?
+        public void DeleteCV(int cvId)
         {
             using (var transaction = _dbContext.Database.BeginTransaction())
             {

@@ -37,9 +37,10 @@ namespace MvcApplicationForCV.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            CV cv = await _cvDataService.GetCVFromIdAsync(id);
+            return View(cv);
         }
 
         [HttpPost]
