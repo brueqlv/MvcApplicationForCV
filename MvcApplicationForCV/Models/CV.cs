@@ -8,13 +8,6 @@
         public virtual List<WorkExperience> WorkExperiences { get; set; }
         public virtual List<LanguageSkills> LanguageSkills { get; set; }
 
-        public CV()
-        {
-            Educations = new List<Education>();
-            WorkExperiences = new List<WorkExperience>();
-            LanguageSkills = new List<LanguageSkills>();
-        }
-
         public void UpdateFrom(CV updatedCV)
         {
             PersonalInfo = updatedCV.PersonalInfo;

@@ -27,21 +27,39 @@ namespace MvcApplicationForCV.Models
         {
             CV existingCV = _dbContext.CVs.Find(CVId);
 
-            if(existingCV != null)
+            if (existingCV != null)
             {
                 existingCV.UpdateFrom(updatedCV);
                 _dbContext.SaveChanges();
             }
         }
 
-        public void DeleteCV(int CVId)
+        public void DeleteCV(int cvId) //Vai ir labāks veids kā izdzēst ierakstu no datu bāzes?
         {
-            CV cvToDelete = _dbContext.CVs.Find(CVId);
-
-            if(cvToDelete != null)
+            using (var transaction = _dbContext.Database.BeginTransaction())
             {
-                _dbContext.CVs.Remove(cvToDelete);
-                _dbContext.SaveChanges();
+
+                CV? cvToDelete = _dbContext.CVs
+                    .Include(cv => cv.PersonalInfo)
+                        .ThenInclude(pi => pi.AddressList)
+                    .Include(cv => cv.Educations)
+                    .Include(cv => cv.WorkExperiences)
+                    .Include(cv => cv.LanguageSkills)
+                    .FirstOrDefault(cv => cv.Id == cvId);
+
+                if (cvToDelete != null)
+                {
+                    _dbContext.RemoveRange(cvToDelete.PersonalInfo.AddressList);
+                    _dbContext.Remove(cvToDelete.PersonalInfo);
+                    _dbContext.RemoveRange(cvToDelete.Educations);
+                    _dbContext.RemoveRange(cvToDelete.WorkExperiences);
+                    _dbContext.RemoveRange(cvToDelete.LanguageSkills);
+
+                    _dbContext.CVs.Remove(cvToDelete);
+                    _dbContext.SaveChanges();
+
+                    transaction.Commit();
+                }
             }
         }
 
