@@ -17,8 +17,6 @@ builder.Services.AddDbContext<MvcApplicationForCvDbContext>(options =>
 
 var app = builder.Build();
 
-// DataBaseFiller.FillData(app.Services); // Should delete 
-
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/CV/Error");

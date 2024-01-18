@@ -42,21 +42,22 @@ namespace MvcApplicationForCV.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            CV cv = await _cvDataService.GetCVFromIdAsync(id);
+            CV? cv = await _cvDataService.GetCVFromIdAsync(id);
             return View(cv);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(int id, CV model)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                await _cvDataService.EditCV(id, model);
+                return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
 
