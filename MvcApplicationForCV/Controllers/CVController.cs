@@ -12,7 +12,10 @@ namespace MvcApplicationForCV.Controllers
         {
             _cvDataService = cvDataService;
         }
-
+        public ActionResult Home()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             List<CV> allCVs = _cvDataService.GetAllCVs();
