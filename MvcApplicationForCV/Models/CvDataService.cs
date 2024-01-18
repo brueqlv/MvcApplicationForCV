@@ -34,9 +34,15 @@ namespace MvcApplicationForCV.Models
                 .FirstOrDefaultAsync(cv => cv.Id == id);
         }
 
-        public async Task EditCV(int CVId, CV updatedCV)
+        public async Task EditCV(int cvId, CV updatedCV)
         {
-            CV existingCV = await _dbContext.CVs.FindAsync(CVId);
+            CV? existingCV = await _dbContext.CVs
+                .Include(cv => cv.PersonalInfo)
+                    .ThenInclude(pi => pi.AddressList)
+                .Include(cv => cv.Educations)
+                .Include(cv => cv.WorkExperiences)
+                .Include(cv => cv.LanguageSkills)
+                .FirstOrDefaultAsync(cv => cv.Id == cvId);
 
             if (existingCV != null)
             {

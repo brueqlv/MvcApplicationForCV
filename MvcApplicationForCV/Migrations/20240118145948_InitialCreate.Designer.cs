@@ -12,7 +12,7 @@ using MvcApplicationForCV.Models;
 namespace MvcApplicationForCV.Migrations
 {
     [DbContext(typeof(MvcApplicationForCvDbContext))]
-    [Migration("20240116192434_InitialCreate")]
+    [Migration("20240118145948_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -197,8 +197,11 @@ namespace MvcApplicationForCV.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EndDate")
+                    b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsStillWorking")
+                        .HasColumnType("bit");
 
                     b.Property<string>("PositionDescription")
                         .IsRequired()

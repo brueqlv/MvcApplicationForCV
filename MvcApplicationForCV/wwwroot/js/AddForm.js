@@ -112,7 +112,7 @@ document.getElementById("addWorkExperience").addEventListener("click", function 
         '<input type="date" class="form-control" name="WorkExperiences[' + index + '].EndDate" id="workEndDate' + index + '" />' +
         '</div>' +
         '<div class="form-check">' +
-        '<input class="form-check-input" type="checkbox" onchange="toggleEndDateForWork(\'workEndDate' + index + '\', this)" id="stillWorking' + index + '"/>' +
+    '<input class="form-check-input" name="WorkExperiences[' + index + '].IsStillWorking" type="checkbox" onchange="toggleEndDateForWork(\'workEndDate' + index + '\', this)" id="stillWorking' + index + '"/>' +
         '<label class="form-check-label" for="stillWorking' + index + '">' +
         'Still Working' +
         '</label>' +

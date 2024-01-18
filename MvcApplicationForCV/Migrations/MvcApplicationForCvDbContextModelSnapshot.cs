@@ -194,8 +194,11 @@ namespace MvcApplicationForCV.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EndDate")
+                    b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsStillWorking")
+                        .HasColumnType("bit");
 
                     b.Property<string>("PositionDescription")
                         .IsRequired()
