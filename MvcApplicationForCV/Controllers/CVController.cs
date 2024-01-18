@@ -16,15 +16,17 @@ namespace MvcApplicationForCV.Controllers
         {
             return View();
         }
+
         public ActionResult Index()
         {
             List<CV> allCVs = _cvDataService.GetAllCVs();
             return View(allCVs);
         }
 
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            return View();
+            CV? cv = await _cvDataService.GetCVFromIdAsync(id);
+            return View(cv);
         }
 
         public ActionResult Create()

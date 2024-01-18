@@ -1,0 +1,87 @@
+﻿@model MvcApplicationForCV.Models.CV
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>@Model.PersonalInfo.FirstName CV</h1>
+
+<div>
+    <h4>CV</h4>
+    <hr />
+    <div class="cv">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col">
+                    <h2>Personal Information</h2>
+                    <p>@Model.PersonalInfo.FirstName @Model.PersonalInfo.LastName</p>
+                    <p>@Model.PersonalInfo.PhoneNumber</p>
+                    <p>@Model.PersonalInfo.Email</p>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col">
+                    <h3>Addresses</h3>
+                    @foreach (var address in Model.PersonalInfo.AddressList)
+                    {
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <p>@address.Country, @address.City, @address.Street, @address.StreetNumber, @address.PostalCode</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col">
+                    <h3>Educations</h3>
+                    @foreach (var education in Model.Educations)
+                    {
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <p>@education.Name - @education.Course (@education.EducationLevel)</p>
+                                <p>Status: @education.EducationStatuss, Date: @education.StartDate - @education.EndDate</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col">
+                    <h3>Work Experiences</h3>
+                    @foreach (var work in Model.WorkExperiences)
+                    {
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <p>@work.CompanyName - @work.PositionTitle</p>
+                                <p>Description: @work.PositionDescription, Work Load: @work.WeeklyWorkLoad</p>
+                                <p>Date: @work.StartDate - @(work.IsStillWorking ? "Present" : work.EndDate.ToString())</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col">
+                    <h3>Language Skills</h3>
+                    @foreach (var language in Model.LanguageSkills)
+                    {
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <p>@language.Name - Listening: @language.Listening, Reading: @language.Reading, Speaking: @language.Speaking, Writing: @language.Writing</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

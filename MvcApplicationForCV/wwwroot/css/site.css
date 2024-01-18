@@ -16,3 +16,12 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+button, input{
+    margin: 5px 0px;
+}
+
+.list {
+    border-top: 2px solid gray;
+    margin: 10px 0;
+}

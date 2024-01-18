@@ -16,7 +16,7 @@
     <label asp-for="PersonalInfo.Email">Email</label>
     <input asp-for="PersonalInfo.Email" class="form-control" required />
 </div>
-<div id="addressList">
+<div id="addressList" class="list">
     @if (Model != null && Model.PersonalInfo.AddressList != null)
     {
         for (int i = 0; i < Model.PersonalInfo.AddressList.Count; i++)
@@ -47,8 +47,8 @@
         }
     }
 </div>
-<button type="button" id="addAddress">Add Address</button>
-<div id="education-list">
+<button type="button" class="btn btn-secondary" id="addAddress">Add Address</button>
+<div id="education-list" class="list">
     @if (Model != null && Model.Educations != null)
     {
         for (int i = 0; i < Model.Educations.Count; i++)
@@ -83,8 +83,8 @@
         }
     }
 </div>
-<button type="button" id="addEducation">Add Education</button>
-<div Id="work-experiences-list">
+<button type="button" class="btn btn-secondary" id="addEducation">Add Education</button>
+<div Id="work-experiences-list" class="list">
     @if (Model != null && Model.WorkExperiences != null)
     {
         for (int i = 0; i < Model.WorkExperiences.Count; i++)
@@ -125,8 +125,8 @@
         }
     }
 </div>
-<button type="button" id="addWorkExperience">Add Work Experience</button>
-<div id="language-skill-list">
+<button type="button" class="btn btn-secondary" id="addWorkExperience">Add Work Experience</button>
+<div id="language-skill-list" class="list">
 
     @if (Model != null && Model.LanguageSkills != null)
     {
@@ -158,4 +158,4 @@
         }
     }
 </div>
-<button type="button" id="addLanguage">Add Language</button>
+<button type="button" class="btn btn-secondary" id="addLanguage">Add Language</button>
