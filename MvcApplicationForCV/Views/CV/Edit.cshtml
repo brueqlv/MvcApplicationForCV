@@ -22,7 +22,7 @@
 </form>
 
 <div>
-    <a class="btn btn-warning" asp-action="Index">Back to List</a>
+    <a class="btn btn-info" asp-action="Show">Back to List</a>
 </div>
 
 @section Scripts {
@@ -30,5 +30,5 @@
         const educationStatusList = @Html.Raw(JsonConvert.SerializeObject(educationStatusOptions.Select(e => new { Value = e.Value, Text = e.Text })));
         const languageSkillList = @Html.Raw(JsonConvert.SerializeObject(languageSkillOptions.Select(e => new { Value = e.Value, Text = e.Text })));
     </script>
-    <script src="~/js/AddForm.js"></script>
+    <script src="~/js/form.js"></script>
 }

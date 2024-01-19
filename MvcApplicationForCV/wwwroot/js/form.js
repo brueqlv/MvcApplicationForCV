@@ -1,4 +1,10 @@
-﻿document.getElementById("addAddress").addEventListener("click", function () {
+﻿document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("btnPrint").addEventListener("click", function () {
+        window.print();
+    });
+});
+
+document.getElementById("addAddress").addEventListener("click", function () {
     let container = document.getElementById("addressList");
     let index = container.getElementsByClassName("address-entry").length;
     let newDiv = document.createElement("div");

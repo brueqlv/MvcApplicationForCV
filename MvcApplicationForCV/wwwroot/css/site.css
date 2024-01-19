@@ -25,3 +25,36 @@ button, input{
     border-top: 2px solid gray;
     margin: 10px 0;
 }
+h1{
+    margin-left: 10px;
+}
+
+p{
+   margin: 5px 0px;
+}
+
+.btn{
+    margin: 2px 10px;
+}
+
+.download{
+    width: 190px
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    .cv, .cv * {
+        visibility: visible;
+    }
+
+    .cv {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        width: 100%;
+    }
+}

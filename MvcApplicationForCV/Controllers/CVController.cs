@@ -6,18 +6,21 @@ namespace MvcApplicationForCV.Controllers
 {
     public class CVController : Controller
     {
+        private PdfConverter _pdfConverter;
         private CvDataService _cvDataService;
 
-        public CVController(CvDataService cvDataService)
+        public CVController(CvDataService cvDataService, PdfConverter pdfConverter)
         {
             _cvDataService = cvDataService;
+            _pdfConverter = pdfConverter;
         }
+
         public ActionResult Home()
         {
             return View();
         }
 
-        public ActionResult Index()
+        public ActionResult Show()
         {
             List<CV> allCVs = _cvDataService.GetAllCVs();
             return View(allCVs);
@@ -39,7 +42,7 @@ namespace MvcApplicationForCV.Controllers
         public ActionResult Create(CV model)
         {
             _cvDataService.AddCV(model);
-            return RedirectToAction("Index");
+            return RedirectToAction("Show");
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -55,7 +58,7 @@ namespace MvcApplicationForCV.Controllers
             try
             {
                 await _cvDataService.EditCV(id, model);
-                return RedirectToAction("Index");
+                return RedirectToAction("Show");
             }
             catch
             {
@@ -66,7 +69,9 @@ namespace MvcApplicationForCV.Controllers
         public ActionResult Delete(int id)
         {
             _cvDataService.DeleteCV(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("Show");
         }
+
+
     }
 }
