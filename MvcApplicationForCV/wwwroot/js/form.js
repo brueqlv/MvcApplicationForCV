@@ -1,10 +1,4 @@
-﻿document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("btnPrint").addEventListener("click", function () {
-        window.print();
-    });
-});
-
-document.getElementById("addAddress").addEventListener("click", function () {
+﻿document.getElementById("addAddress").addEventListener("click", function () {
     let container = document.getElementById("addressList");
     let index = container.getElementsByClassName("address-entry").length;
     let newDiv = document.createElement("div");
@@ -13,23 +7,23 @@ document.getElementById("addAddress").addEventListener("click", function () {
     newDiv.innerHTML =
         '<div class="form-group">' +
         '<label>Country</label>' +
-    '<input type="text" class="form-control" name="PersonalInfo.AddressList[' + index + '].Country" required/>' +
+        '<input type="text" class="form-control" name="PersonalInfo.AddressList[' + index + '].Country" required/>' +
         '</div>' +
         '<div class="form-group">' +
         '<label>City</label>' +
-    '<input type="text" class="form-control" name="PersonalInfo.AddressList[' + index + '].City" required/>' +
+        '<input type="text" class="form-control" name="PersonalInfo.AddressList[' + index + '].City" required/>' +
         '</div>' +
         '<div class="form-group">' +
         '<label>Street</label>' +
-    '<input type="text" class="form-control" name="PersonalInfo.AddressList[' + index + '].Street" required/>' +
+        '<input type="text" class="form-control" name="PersonalInfo.AddressList[' + index + '].Street" required/>' +
         '</div>' +
         '<div class="form-group">' +
         '<label>Street Number</label>' +
-    '<input type="text" class="form-control" name="PersonalInfo.AddressList[' + index + '].StreetNumber" required/>' +
+        '<input type="text" class="form-control" name="PersonalInfo.AddressList[' + index + '].StreetNumber" required/>' +
         '</div>' +
         '<div class="form-group">' +
         '<label>Postal Code</label>' +
-    '<input type="text" class="form-control" name="PersonalInfo.AddressList[' + index + '].PostalCode" required/>' +
+        '<input type="text" class="form-control" name="PersonalInfo.AddressList[' + index + '].PostalCode" required/>' +
         '</div>' +
         '<button type="button" class="btn btn-danger btn-sm" onclick="removeEntry(this)">Remove</button>';
 
@@ -51,16 +45,16 @@ document.getElementById("addEducation").addEventListener("click", function () {
 
     newDiv.innerHTML =
         '<div class="form-group">' +
-        '<label>Name</label>' +
-    '<input type="text" class="form-control" name="Educations[' + index + '].Name" required/>' +
+        '<label>School Facility Name</label>' +
+        '<input type="text" class="form-control" name="Educations[' + index + '].Name" required/>' +
         '</div>' +
         '<div class="form-group">' +
         '<label>Course</label>' +
-    '<input type="text" class="form-control" name="Educations[' + index + '].Course" required/>' +
+        '<input type="text" class="form-control" name="Educations[' + index + '].Course" required/>' +
         '</div>' +
         '<div class="form-group">' +
         '<label>Education Level</label>' +
-    '<input type="text" class="form-control" name="Educations[' + index + '].EducationLevel" required/>' +
+        '<input type="text" class="form-control" name="Educations[' + index + '].EducationLevel" required/>' +
         '</div>' +
         '<div class="form-group">' +
         '<label>Education Status</label>' +
@@ -70,7 +64,7 @@ document.getElementById("addEducation").addEventListener("click", function () {
         '</div>' +
         '<div class="form-group">' +
         '<label>Start Date</label>' +
-    '<input type="date" class="form-control" name="Educations[' + index + '].StartDate" required/>' +
+        '<input type="date" class="form-control" name="Educations[' + index + '].StartDate" required/>' +
         '</div>' +
         '<div class="form-group">' +
         '<label>End Date</label>' +
@@ -95,30 +89,30 @@ document.getElementById("addWorkExperience").addEventListener("click", function 
     newDiv.innerHTML =
         '<div class="form-group">' +
         '<label>Company Name</label>' +
-    '<input type="text" class="form-control" name="WorkExperiences[' + index + '].CompanyName" required/>' +
+        '<input type="text" class="form-control" name="WorkExperiences[' + index + '].CompanyName" required/>' +
         '</div>' +
         '<div class="form-group">' +
         '<label>Position Title</label>' +
-    '<input type="text" class="form-control" name="WorkExperiences[' + index + '].PositionTitle" required/>' +
+        '<input type="text" class="form-control" name="WorkExperiences[' + index + '].PositionTitle" required/>' +
         '</div>' +
         '<div class="form-group">' +
         '<label>Position Description</label>' +
-    '<input type="text" class="form-control" name="WorkExperiences[' + index + '].PositionDescription" required/>' +
+        '<input type="text" class="form-control" name="WorkExperiences[' + index + '].PositionDescription" required/>' +
         '</div>' +
         '<div class="form-group">' +
         '<label>Weekly Work Load</label>' +
-    '<input type="number" class="form-control" name="WorkExperiences[' + index + '].WeeklyWorkLoad" min="0" required/>' +
+        '<input type="number" class="form-control" name="WorkExperiences[' + index + '].WeeklyWorkLoad" min="0" required/>' +
         '</div>' +
         '<div class="form-group">' +
         '<label>Start Date</label>' +
-    '<input type="date" class="form-control" name="WorkExperiences[' + index + '].StartDate" required/>' +
+        '<input type="date" class="form-control" name="WorkExperiences[' + index + '].StartDate" required/>' +
         '</div>' +
         '<div class="form-group">' +
         '<label>End Date</label>' +
-        '<input type="date" class="form-control" name="WorkExperiences[' + index + '].EndDate" id="workEndDate' + index + '" />' +
+        '<input type="date" class="form-control" name="WorkExperiences[' + index + '].EndDate" id="workEndDate' + index + '" required />' +
         '</div>' +
         '<div class="form-check">' +
-    '<input class="form-check-input" name="WorkExperiences[' + index + '].IsStillWorking" type="checkbox" onchange="toggleEndDateForWork(\'workEndDate' + index + '\', this)" id="stillWorking' + index + '"/>' +
+        '<input class="form-check-input" name="WorkExperiences[' + index + '].IsStillWorking" type="checkbox" onchange="toggleEndDateForWork(\'workEndDate' + index + '\', this)" id="stillWorking' + index + '"/>' +
         '<label class="form-check-label" for="stillWorking' + index + '">' +
         'Still Working' +
         '</label>' +
@@ -140,7 +134,7 @@ document.getElementById("addLanguage").addEventListener("click", function () {
 
     newDiv.innerHTML = `
                     <div class="form-group">
-                        <label>Name</label>
+                        <label>Language Name</label>
                         <input type="text" class="form-control" name="LanguageSkills[${index}].Name" required/>
                     </div>
                     <div class="form-group">
@@ -166,7 +160,7 @@ document.getElementById("addLanguage").addEventListener("click", function () {
 });
 
 function toggleEndDateForWork(endDateId, checkbox) {
-    let endDateInput = document.getElementById(endDateId);
+    const endDateInput = document.getElementById(endDateId);
     endDateInput.disabled = checkbox.checked;
 
     if (checkbox.checked) {
@@ -176,13 +170,12 @@ function toggleEndDateForWork(endDateId, checkbox) {
     }
 }
 
-//For disabling or enabling enddate for education
 function applyToggleLogic(educationStatusId, endDateId) {
-    var educationStatus = document.getElementById(educationStatusId);
-    var endDate = document.getElementById(endDateId);
+    const educationStatus = document.getElementById(educationStatusId);
+    let endDate = document.getElementById(endDateId);
 
     function toggleEndDate() {
-        var isEndDateRequired = educationStatus.value == '0';
+        let isEndDateRequired = educationStatus.value == '0';
         endDate.disabled = !isEndDateRequired;
 
         if (isEndDateRequired) {

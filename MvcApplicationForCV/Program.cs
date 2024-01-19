@@ -10,7 +10,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<CvDataService>();
 
 builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
-builder.Services.AddSingleton<PdfConverter>();
 
 
 builder.Services.AddDbContext<MvcApplicationForCvDbContext>(options =>

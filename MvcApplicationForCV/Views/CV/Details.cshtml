@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            @if(Model.PersonalInfo.AddressList.Count > 0)
+            @if (Model.PersonalInfo.AddressList.Count > 0)
             {
                 <div class="row mb-4">
                     <div class="col">
@@ -39,7 +39,7 @@
                 </div>
             }
 
-            @if(Model.Educations.Count > 0)
+            @if (Model.Educations.Count > 0)
             {
                 <div class="row mb-4">
                     <div class="col">
@@ -60,7 +60,7 @@
                 </div>
             }
 
-            @if(Model.WorkExperiences.Count > 0)
+            @if (Model.WorkExperiences.Count > 0)
             {
                 <div class="row mb-4">
                     <div class="col">
@@ -79,7 +79,7 @@
                 </div>
             }
 
-            @if(Model.LanguageSkills.Count > 0)
+            @if (Model.LanguageSkills.Count > 0)
             {
                 <div class="row mb-4">
                     <div class="col">
@@ -98,6 +98,7 @@
         </div>
     </div>
 </div>
+
 <div>
     <button id="btnPrint" class="btn btn-primary">Print</button> |
     <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model?.Id">Edit</a> |

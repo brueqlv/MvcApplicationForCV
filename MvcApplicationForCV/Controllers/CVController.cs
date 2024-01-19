@@ -1,18 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MvcApplicationForCV.Models;
 
 namespace MvcApplicationForCV.Controllers
 {
     public class CVController : Controller
     {
-        private PdfConverter _pdfConverter;
         private CvDataService _cvDataService;
 
-        public CVController(CvDataService cvDataService, PdfConverter pdfConverter)
+        public CVController(CvDataService cvDataService)
         {
             _cvDataService = cvDataService;
-            _pdfConverter = pdfConverter;
         }
 
         public ActionResult Home()
@@ -71,7 +68,5 @@ namespace MvcApplicationForCV.Controllers
             _cvDataService.DeleteCV(id);
             return RedirectToAction("Show");
         }
-
-
     }
 }

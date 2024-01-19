@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace MvcApplicationForCV.Models
+﻿namespace MvcApplicationForCV.Models
 {
     public class Address
     {
