@@ -9,8 +9,8 @@
     <input asp-for="PersonalInfo.LastName" class="form-control" required />
 </div>
 <div class="form-group">
-    <label asp-for="PersonalInfo.PhoneNumber">Phone Number</label>
-    <input asp-for="PersonalInfo.PhoneNumber" class="form-control" required />
+    <label asp-for="PersonalInfo.PhoneNumber" >Phone Number</label>
+    <input asp-for="PersonalInfo.PhoneNumber" class="form-control" pattern="(\+\d{1,3})?\s?\d{3,}" required />
 </div>
 <div class="form-group">
     <label asp-for="PersonalInfo.Email">Email</label>
