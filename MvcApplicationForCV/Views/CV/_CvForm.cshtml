@@ -1,0 +1,165 @@
+﻿@model MvcApplicationForCV.Models.CV
+
+<div class="form-group">
+    <label asp-for="PersonalInfo.FirstName">First Name</label>
+    <input asp-for="PersonalInfo.FirstName" class="form-control" required />
+</div>
+<div class="form-group">
+    <label asp-for="PersonalInfo.LastName">Last Name</label>
+    <input asp-for="PersonalInfo.LastName" class="form-control" required />
+</div>
+<div class="form-group">
+    <label asp-for="PersonalInfo.PhoneNumber">Phone Number</label>
+    <input asp-for="PersonalInfo.PhoneNumber" class="form-control" pattern="(\+\d{1,3})?\s?\d{3,}" required />
+</div>
+<div class="form-group">
+    <label asp-for="PersonalInfo.Email">Email</label>
+    <input asp-for="PersonalInfo.Email" class="form-control" required />
+</div>
+
+<div id="addressList" class="list">
+    @if (Model != null && Model.PersonalInfo.AddressList != null)
+    {
+        for (int i = 0; i < Model.PersonalInfo.AddressList.Count; i++)
+        {
+            <div class="address-entry">
+                <div class="form-group">
+                    <label asp-for="PersonalInfo.AddressList[i].Country">Country</label>
+                    <input asp-for="PersonalInfo.AddressList[i].Country" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label asp-for="PersonalInfo.AddressList[i].City">City</label>
+                    <input asp-for="PersonalInfo.AddressList[i].City" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label asp-for="PersonalInfo.AddressList[i].Street">Street</label>
+                    <input asp-for="PersonalInfo.AddressList[i].Street" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label asp-for="PersonalInfo.AddressList[i].StreetNumber">Street Number</label>
+                    <input asp-for="PersonalInfo.AddressList[i].StreetNumber" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label asp-for="PersonalInfo.AddressList[i].PostalCode">Postal Code</label>
+                    <input asp-for="PersonalInfo.AddressList[i].PostalCode" class="form-control" required />
+                </div>
+                <button type="button" class="btn btn-danger btn-sm" onclick="removeEntry(this)">Remove</button>
+            </div>
+        }
+    }
+</div>
+<button type="button" class="btn btn-secondary" id="addAddress">Add Address</button>
+
+<div id="education-list" class="list">
+    @if (Model != null && Model.Educations != null)
+    {
+        for (int i = 0; i < Model.Educations.Count; i++)
+        {
+            <div class="education-entry">
+                <div class="form-group">
+                    <label asp-for="Educations[i].Name">School Facility Name</label>
+                    <input asp-for="Educations[i].Name" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Educations[i].Course">Course</label>
+                    <input asp-for="Educations[i].Course" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Educations[i].EducationLevel">Education Level</label>
+                    <input asp-for="Educations[i].EducationLevel" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Educations[i].EducationStatuss">Education Statuss</label>
+                    <select asp-for="Educations[i].EducationStatuss" asp-items="Html.GetEnumSelectList<MvcApplicationForCV.Models.Enum.EducationStatuss>()" class="form-control" id="educationStatus + @i"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Educations[i].StartDate">Start Date</label>
+                    <input asp-for="Educations[i].StartDate" type="date" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Educations[i].EndDate">End Date</label>
+                    <input asp-for="Educations[i].EndDate" type="date" class="form-control" id="endDate + @i" required />
+                </div>
+                <button type="button" class="btn btn-danger btn-sm" onclick="removeEntry(this)">Remove</button>
+            </div>
+        }
+    }
+</div>
+<button type="button" class="btn btn-secondary" id="addEducation">Add Education</button>
+
+<div Id="work-experiences-list" class="list">
+    @if (Model != null && Model.WorkExperiences != null)
+    {
+        for (int i = 0; i < Model.WorkExperiences.Count; i++)
+        {
+            <div class="work-experience-entry">
+                <div class="form-group">
+                    <label asp-for="WorkExperiences[i].CompanyName">Company Name</label>
+                    <input asp-for="WorkExperiences[i].CompanyName" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label asp-for="WorkExperiences[i].PositionTitle">Position Title</label>
+                    <input asp-for="WorkExperiences[i].PositionTitle" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label asp-for="WorkExperiences[i].PositionDescription">Position Description</label>
+                    <input asp-for="WorkExperiences[i].PositionDescription" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label asp-for="WorkExperiences[i].WeeklyWorkLoad">Weekly Work Load</label>
+                    <input asp-for="WorkExperiences[i].WeeklyWorkLoad" class="form-control" type="number" min="0" required />
+                </div>
+                <div class="form-group">
+                    <label asp-for="WorkExperiences[i].StartDate">Start Date</label>
+                    <input asp-for="WorkExperiences[i].StartDate" type="date" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label asp-for="WorkExperiences[i].EndDate">End Date</label>
+                    <input asp-for="WorkExperiences[i].EndDate" type="date" class="form-control" id="workEndDate + @i" required />
+                </div>
+                <div class="form-check">
+                    <input asp-for="WorkExperiences[i].IsStillWorking" class="form-check-input" type="checkbox" onchange="toggleEndDateForWork('workEndDate + @i', this)" id="stillWorking + @i" />
+                    <label class="form-check-label" for="stillWorking + @i">
+                        Still Working
+                    </label>
+                </div>
+                <button type="button" class="btn btn-danger btn-sm" onclick="removeEntry(this)">Remove</button>
+            </div>
+        }
+    }
+</div>
+<button type="button" class="btn btn-secondary" id="addWorkExperience">Add Work Experience</button>
+
+<div id="language-skill-list" class="list">
+
+    @if (Model != null && Model.LanguageSkills != null)
+    {
+        for (int i = 0; i < Model.LanguageSkills.Count; i++)
+        {
+            <div class="language-entry">
+                <div class="form-group">
+                    <label asp-for="LanguageSkills[i].Name">Language Name</label>
+                    <input asp-for="LanguageSkills[i].Name" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label asp-for="LanguageSkills[i].Listening">Listening</label>
+                    <select asp-for="LanguageSkills[i].Listening" asp-items="Html.GetEnumSelectList<MvcApplicationForCV.Models.Enum.LanguageSkills>()" class="form-control"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LanguageSkills[i].Reading">Reading</label>
+                    <select asp-for="LanguageSkills[i].Reading" asp-items="Html.GetEnumSelectList<MvcApplicationForCV.Models.Enum.LanguageSkills>()" class="form-control"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LanguageSkills[i].Speaking">Speaking</label>
+                    <select asp-for="LanguageSkills[i].Speaking" asp-items="Html.GetEnumSelectList<MvcApplicationForCV.Models.Enum.LanguageSkills>()" class="form-control"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LanguageSkills[i].Writing">Writing</label>
+                    <select asp-for="LanguageSkills[i].Writing" asp-items="Html.GetEnumSelectList<MvcApplicationForCV.Models.Enum.LanguageSkills>()" class="form-control"></select>
+                </div>
+                <button type="button" class="btn btn-danger btn-sm" onclick="removeEntry(this)">Remove</button>
+            </div>
+        }
+    }
+</div>
+<button type="button" class="btn btn-secondary" id="addLanguage">Add Language</button>
