@@ -25,7 +25,7 @@ namespace MvcApplicationForCV.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            CV? cv = await _cvDataService.GetCVFromIdAsync(id);
+            CV? cv = await _cvDataService.GetCVByIdAsync(id);
             return View(cv);
         }
 
@@ -44,7 +44,7 @@ namespace MvcApplicationForCV.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            CV? cv = await _cvDataService.GetCVFromIdAsync(id);
+            CV? cv = await _cvDataService.GetCVByIdAsync(id);
             return View(cv);
         }
 

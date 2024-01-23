@@ -4,19 +4,19 @@
     {
         public enum EducationStatuss
         {
-            Compleated,
-            Stoped,
-            InProgress
+            Completed = 0,
+            Stoped = 1,
+            InProgress = 2
         }
 
         public enum LanguageSkills
         {
-            A1,
-            A2,
-            B1,
-            B2,
-            C1,
-            C2,
+            A1 = 0,
+            A2 = 1,
+            B1 = 2,
+            B2 = 3,
+            C1 = 4,
+            C2 = 5,
         }
     }
 }

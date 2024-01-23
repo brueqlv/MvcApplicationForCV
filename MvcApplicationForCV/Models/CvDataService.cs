@@ -21,7 +21,7 @@ namespace MvcApplicationForCV.Models
                 .ToList();
         }
 
-        public async Task<CV?> GetCVFromIdAsync(int id)
+        public async Task<CV?> GetCVByIdAsync(int id)
         {
             return await _dbContext.CVs
                 .Include(cv => cv.PersonalInfo)
